@@ -4,9 +4,3 @@ export interface Memory {
   url: string;
   caption: string;
 }
-
-export interface LoveLetterParams {
-  herName: string;
-  favoriteMemory: string;
-  vibe: 'poetic' | 'funny' | 'deep' | 'cute';
-}

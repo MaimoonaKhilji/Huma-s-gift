@@ -1,9 +1,8 @@
 
 import React, { useState } from 'react';
-import { Heart, Gift, Star, Users, ChevronDown, Sparkles, Quote, Smile, PenTool } from 'lucide-react';
+import { Heart, Star, Users, ChevronDown, Sparkles, Quote, Smile, PenTool } from 'lucide-react';
 import HeartBackground from './components/HeartBackground';
 import ValentineRequest from './components/ValentineRequest';
-import LetterGenerator from './components/LetterGenerator';
 
 const App: React.FC = () => {
   const [accepted, setAccepted] = useState(false);
@@ -24,8 +23,8 @@ const App: React.FC = () => {
     document.body.appendChild(script);
   };
 
-  const scrollToLetters = () => {
-    const element = document.getElementById('letter-section');
+  const scrollToCollage = () => {
+    const element = document.getElementById('huma-collection');
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -59,7 +58,7 @@ const App: React.FC = () => {
 
           {/* Floating indicator */}
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
-            <ChevronDown className="text-rose-300 w-8 h-8" />
+            <ChevronDown className="text-rose-300 w-8 h-8 cursor-pointer" onClick={scrollToCollage} />
           </div>
         </section>
 
@@ -80,7 +79,7 @@ const App: React.FC = () => {
                   "You're officially my favorite person. Let's make this day about the best kind of love: US."
                 </p>
                 <button 
-                  onClick={scrollToLetters}
+                  onClick={scrollToCollage}
                   className="mt-4 px-8 py-3 bg-white text-rose-600 rounded-full font-bold shadow-lg hover:bg-rose-50 transition-colors"
                 >
                   Read Your Letters 💌
@@ -91,7 +90,7 @@ const App: React.FC = () => {
         </section>
 
         {/* HARD-CODED COLLAGE SECTION */}
-        <section className="py-20 px-4">
+        <section id="huma-collection" className="py-20 px-4">
           <div className="max-w-6xl mx-auto space-y-12">
             <div className="text-center">
                <h2 className="text-4xl font-romantic text-rose-600 mb-2">The Huma Collection</h2>
@@ -147,27 +146,8 @@ const App: React.FC = () => {
                 </p>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* AI LETTER GENERATOR SECTION */}
-        <section id="letter-section" className="py-32 px-4 bg-gradient-to-b from-transparent to-rose-100/30">
-          <div className="max-w-2xl mx-auto space-y-12">
-            <div className="text-center space-y-4">
-              <div className="inline-block p-3 bg-rose-100 rounded-2xl text-rose-500 mb-2">
-                <Gift className="w-6 h-6" />
-              </div>
-              <h2 className="text-4xl md:text-5xl font-romantic text-rose-600">The Bestie AI Lab</h2>
-              <p className="text-slate-500 font-medium">
-                Want more? Let the stars generate a unique new message just for Huma!
-              </p>
-            </div>
-            
-            <div className="shadow-2xl shadow-rose-200/50">
-              <LetterGenerator />
-            </div>
-
-            {/* Footer-like message */}
+            {/* Final footer message */}
             <div className="pt-20 pb-10 text-center">
               <div className="flex justify-center gap-2 mb-4">
                 <Heart className="w-4 h-4 text-rose-300 fill-rose-300" />
